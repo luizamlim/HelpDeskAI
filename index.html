@@ -37,6 +37,7 @@
 
         body {
             color: var(--cor-cinza-escuro);
+            background-color: var(--cor-cinza-claro); /* Fundo padrão mais suave */
         }
 
         .container {
@@ -46,29 +47,47 @@
         }
 
         section {
-            padding: 80px 0;
+            padding: 60px 0; /* Padding responsivo padrão */
         }
 
-        h1,
-        h2,
-        h3 {
+        @media (min-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+        }
+
+        h1, h2, h3 {
             color: var(--cor-preto);
+            line-height: 1.3;
         }
 
         h2 {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 10px;
+        }
+
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 2.5rem;
+            }
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #666;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        @media (min-width: 768px) {
+            .section-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 60px;
+            }
         }
 
         .highlight {
@@ -92,9 +111,14 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            text-decoration: none;
+        }
+
+        @media (min-width: 768px) {
+            .logo {
+                font-size: 1.8rem;
+            }
         }
 
         .logo a {
@@ -102,10 +126,17 @@
             text-decoration: none;
         }
 
+        /* Menu Desktop */
         .nav-list {
             list-style: none;
-            display: flex;
+            display: none; /* Escondido no mobile por padrão */
             gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .nav-list {
+                display: flex;
+            }
         }
 
         .nav-link {
@@ -119,9 +150,17 @@
             color: var(--cor-azul);
         }
 
+        /* Ícone Menu Mobile */
         .mobile-menu-icon {
-            display: none;
+            display: block;
             cursor: pointer;
+            z-index: 1001; /* Fica acima do menu aberto */
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-icon {
+                display: none;
+            }
         }
 
         .mobile-menu-icon div {
@@ -132,27 +171,60 @@
             transition: 0.3s;
         }
 
+        /* Menu Mobile Ativo */
+        .nav-list.active {
+            display: flex;
+            position: fixed; /* Fixa na tela inteira */
+            top: 0;
+            left: 0; /* Começa da esquerda */
+            width: 100%; /* Largura total */
+            height: 100vh; /* Altura total */
+            background: var(--cor-branco);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 999; /* Abaixo do ícone */
+            gap: 40px; /* Espaço maior entre itens */
+            font-size: 1.5rem; /* Texto maior */
+        }
+
         /* --- Seção Hero (Principal) --- */
         #inicio {
             background-color: var(--cor-cinza-claro);
-            padding-top: 120px;
-            padding-bottom: 120px;
-        }
-
-        .hero-content {
+            padding-top: 80px;
+            padding-bottom: 80px;
             text-align: center;
         }
 
+        @media (min-width: 768px) {
+            #inicio {
+                padding-top: 120px;
+                padding-bottom: 120px;
+            }
+        }
+
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             margin-bottom: 20px;
-            line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             max-width: 700px;
             margin: 0 auto 30px auto;
+            padding: 0 10px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content p {
+                font-size: 1.2rem;
+            }
         }
 
         .cta-button {
@@ -163,78 +235,63 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: background-color 0.3s ease;
             border: none;
+            cursor: pointer;
+            width: 100%; /* Botão largo no mobile */
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .cta-button {
+                width: auto; /* Botão normal no desktop */
+                font-size: 1.1rem;
+            }
         }
 
         .cta-button:hover {
             background-color: #3064e6;
         }
 
-        /* --- Seção Sobre / Diferenciais --- */
-        #sobre {
-            background-color: var(--cor-cinza-claro);
-        }
-
-        .sobre-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .sobre-texto {
-            flex: 1;
-        }
-
-        .sobre-texto h2 {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .sobre-texto p {
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .diferenciais-lista li {
-            list-style: none;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .diferenciais-lista i {
-            color: var(--cor-azul);
-            margin-right: 15px;
-            font-size: 1.2rem;
-        }
-
-        .sobre-imagem {
-            flex: 1;
-            text-align: center;
-        }
-
-        .sobre-imagem img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        /* --- Seção de Chamado --- */
+        /* --- Seção Abrir Chamado (Responsiva) --- */
         .abrirnovochamado-wrapper {
             display: flex;
-            gap: 50px;
-            flex-direction: row-reverse;
+            flex-direction: column; /* Coluna no mobile */
+            gap: 30px;
             background-color: var(--cor-branco);
-            padding: 50px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: var(--sombra);
+        }
+
+        @media (min-width: 900px) {
+            .abrirnovochamado-wrapper {
+                flex-direction: row-reverse; /* Lado a lado no desktop, form primeiro */
+                gap: 50px;
+                padding: 50px;
+            }
         }
 
         .info-abrirnovochamado,
         .form-abrirnovochamado {
             flex: 1;
+            width: 100%; /* Ocupa largura total */
+        }
+
+        /* Área de FAQ */
+        .info-abrirnovochamado {
+            background-color: #edf4fd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #c5dfff;
+            order: 1; /* No mobile, FAQ aparece depois do formulário (opcional, mude para -1 para aparecer antes) */
+        }
+
+        @media (min-width: 900px) {
+            .info-abrirnovochamado {
+                order: 0; /* Volta ao normal no desktop */
+            }
         }
 
         .info-abrirnovochamado h4 {
@@ -243,86 +300,140 @@
             margin-bottom: 20px;
         }
 
-        .info-abrirnovochamado {
-            background-color: #edf4fd;
-            padding: 20px;
-            border-radius: 8px;
-            border: 2px solid #c5dfff;
-        }
-
-        .info-abrirnovochamado .info-item .icon {
-            color: var(--cor-laranja);
-        }
-
         .info-item {
             display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .info-item .icon {
-            font-size: 1.5rem;
-            color: var(--cor-azul);
-            margin-right: 20px;
-            width: 40px;
-            text-align: center;
-        }
-
-        .info-item a {
-            text-decoration: none;
-            color: var(--cor-cinza-escuro);
-            transition: color 0.3s;
+            align-items: flex-start; /* Alinha ícone ao topo se o texto for longo */
+            margin-bottom: 15px;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            border-radius: 6px;
+            transition: transform 0.2s;
         }
 
         .info-item:hover {
-            background: #f7f9fc;
-            border-color: var(--cor-azul);
-            cursor: pointer;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-
-            background: #ffffff;
-            border: 1px solid --cor-cinza-claro;
-            padding: 10px 13px;
-            border-radius: 6px;
+        .info-item .icon {
+            font-size: 1.2rem;
+            color: var(--cor-azul); /* Ícone azul conforme pedido */
+            margin-right: 15px;
+            min-width: 30px; /* Garante espaço fixo para o ícone */
+            text-align: center;
+            margin-top: 3px; /* Ajuste fino */
         }
 
+        /* Formulário */
         .form-group {
             margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 600;
+            font-size: 0.95rem;
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px;
             border-radius: 5px;
             border: 1px solid #ddd;
             font-size: 1rem;
+            background-color: #fff; /* Garante fundo branco */
         }
 
         .form-group textarea {
             resize: vertical;
-            height: 150px;
+            height: 120px;
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--cor-azul);
+            box-shadow: 0 0 0 3px rgba(48, 100, 230, 0.1); /* Efeito de foco */
         }
 
         .btn-container {
-            text-align: right;
+            text-align: center; /* Centralizado no mobile */
+            margin-top: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .btn-container {
+                text-align: right; /* Direita no desktop */
+            }
+        }
+
+        /* --- Seção Sobre / Contato (Responsiva) --- */
+        #sobre {
+            background-color: var(--cor-cinza-claro);
+        }
+
+        .sobre-content {
+            display: flex;
+            flex-direction: column; /* Coluna no mobile */
+            gap: 40px;
+        }
+
+        @media (min-width: 900px) {
+            .sobre-content {
+                flex-direction: row; /* Linha no desktop */
+                align-items: center; /* Centraliza verticalmente */
+            }
+        }
+
+        .sobre-texto, .sobre-imagem {
+            flex: 1;
+            width: 100%;
+        }
+
+        .sobre-texto h2 {
+            text-align: center; /* Centro no mobile */
+        }
+
+        @media (min-width: 900px) {
+            .sobre-texto h2 {
+                text-align: left; /* Esquerda no desktop */
+            }
+        }
+
+        /* Cards de Contato */
+        .sobre-texto .info-item {
+            border: none; /* Remove borda dos itens de contato */
+            background: transparent;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        
+        .sobre-texto .info-item .icon {
+             color: var(--cor-laranja); /* Ícones de contato laranja */
+             font-size: 1.5rem;
+        }
+
+        .sobre-imagem {
+            display: none; /* Esconde imagem no mobile para economizar espaço (opcional) */
+        }
+
+        @media (min-width: 768px) {
+            .sobre-imagem {
+                display: block; /* Mostra no tablet/desktop */
+                text-align: center;
+            }
+        }
+
+        .sobre-imagem img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--sombra);
         }
 
         /* --- Rodapé --- */
@@ -331,12 +442,19 @@
             color: var(--cor-branco);
             text-align: center;
             padding: 40px 0;
+            margin-top: auto;
         }
 
         .footer-logo {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-logo {
+                font-size: 2rem;
+            }
         }
 
         .footer-logo .highlight {
@@ -345,64 +463,12 @@
 
         footer p {
             color: #ccc;
+            font-size: 0.9rem;
         }
 
-        /* --- Responsividade (para Celulares) --- */
-        @media (max-width: 768px) {
-            .nav-list {
-                position: absolute;
-                top: 70px;
-                right: 0;
-                width: 50%;
-                height: calc(100vh - 70px);
-                background: var(--cor-branco);
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-around;
-                transform: translateX(100%);
-                transition: transform 0.3s ease-in;
-                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-list.active {
-                transform: translateX(0);
-            }
-
-            .mobile-menu-icon {
-                display: block;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .sobre-content {
-                flex-direction: column;
-            }
-
-            .sobre-imagem {
-                margin-top: 30px;
-            }
-
-            .sobre-texto h2 {
-                text-align: center;
-            }
-
-            .abrirnovochamado-wrapper {
-                flex-direction: column;
-                padding: 30px;
-            }
-        }
+        /* Animação Fade In */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
@@ -413,7 +479,7 @@
     <header>
         <nav class="container nav-bar">
             <div class="logo">
-                <a href="#inicio">HelpDeskAI<span class="highlight">
+                <a href="#inicio">HelpDeskAI<span class="highlight"></span></a>
             </div>
             <ul class="nav-list">
                 <li><a href="#inicio" class="nav-link">Início</a></li>
@@ -431,10 +497,8 @@
     <main>
         <section id="inicio">
             <div class="container hero-content">
-                <h1>Gestão de <span class="highlight">Chamados Inteligente</span> com apoio de Inteligência Artificial
-                </h1>
-                <p>Centralize o atendimento, agilize soluções com nossa base de conhecimento dinâmica e transforme o
-                    suporte técnico da Zênite Tech em um serviço proativo e eficiente.</p>
+                <h1>Gestão de <span class="highlight">Chamados Inteligente</span> com apoio de Inteligência Artificial</h1>
+                <p>Centralize o atendimento, agilize soluções com nossa base de conhecimento dinâmica e transforme o suporte técnico da Zênite Tech em um serviço proativo e eficiente.</p>
                 <a href="#abrirnovochamado" class="cta-button">Fale com um Especialista</a>
             </div>
         </section>
@@ -442,229 +506,51 @@
         <section id="abrirnovochamado">
             <div class="container">
                 <h2>Abrir Novo Chamado</h2>
-                <p class="section-subtitle">Descreva sua solicitação abaixo. Nossa IA analisará o conteúdo em tempo real
-                    para sugerir soluções imediatas da base de conhecimento ou encaminhar ao técnico ideal.</p>
+                <p class="section-subtitle">Descreva sua solicitação abaixo. Nossa IA analisará o conteúdo em tempo real para sugerir soluções imediatas da base de conhecimento ou encaminhar ao técnico ideal.</p>
 
                 <div class="abrirnovochamado-wrapper">
+                    <!-- Área de FAQ (Lateral/Baixo) -->
                     <div class="info-abrirnovochamado">
+                        <!-- O conteúdo aqui será preenchido automaticamente pelo JavaScript -->
                         <h4>Base de Conhecimento (FAQ)</h4>
-                        <p>Com base no que você digitou, talvez estes artigos ajudem:</p>
-                        <br>
-                        <div class="info-item">
-                            <div class="icon"><i class="fa fa-exclamation-circle"></i></div>
-                            <div>
-                                <strong>Solução Rápida: Minha impressora está 'offline"</strong><br>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="icon"><i class="fa fa-exclamation-circle"></i></div>
-                            <div>
-                                <strong>Como reinstalar o driver da impressora HP-1020</strong><br>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="icon"><i class="fa fa-exclamation-circle"></i></div>
-                            <div>
-                                <strong>Verificando a fila de impressão do Windows</strong><br>
-                            </div>
-                        </div>
+                        <p>Carregando sugestões...</p>
                     </div>
 
+                    <!-- Área do Formulário -->
                     <div class="form-abrirnovochamado">
                         <form action="" method="POST">
                             <div class="form-group">
                                 <label for="categoria">Categoria</label>
                                 <select id="categoria" name="categoria" required>
                                     <option value="hardware">Hardware (Impressora, Mouse, Teclado)</option>
-                                    <option value="software">Software (Pacote Office, Navegadores, Sistemas Internos,
-                                        Antivírus)</option>
-                                    <option value="rede">Rede e Internet (Wi-Fi, Cabeamento, Queda de Conexão, VPN)
-                                    </option>
-                                    <option value="email">E-mail (Acesso ao Outlook, Senha, Configuração no celular,
-                                        Caixa cheia)</option>
-                                    <option value="backup">Backup e Arquivos (Restauração, Erro no OneDrive, Espaço
-                                        insuficiente)</option>
-                                    <option value="instalacoes">Instalações e Configurações (Instalar software,
-                                        Configurar equipamento novo, Atualizações)</option>
-                                    <option value="solicitacoes">Solicitações de Serviços (Troca de equipamento, Novo
-                                        usuário, Acesso extra)</option>
+                                    <option value="software">Software (Pacote Office, Navegadores, Sistemas Internos, Antivírus)</option>
+                                    <option value="rede">Rede e Internet (Wi-Fi, Cabeamento, Queda de Conexão, VPN)</option>
+                                    <option value="email">E-mail (Acesso ao Outlook, Senha, Configuração no celular, Caixa cheia)</option>
+                                    <option value="backup">Backup e Arquivos (Restauração, Erro no OneDrive, Espaço insuficiente)</option>
+                                    <option value="instalacoes">Instalações e Configurações (Instalar software, Configurar equipamento novo, Atualizações)</option>
+                                    <option value="solicitacoes">Solicitações de Serviços (Troca de equipamento, Novo usuário, Acesso extra)</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="titulo">Título do Problema</label>
-                                <input type="text" id="titulo" name="titulo" required>
+                                <input type="text" id="titulo" name="titulo" required placeholder="Ex: Impressora não imprime">
                             </div>
                             <div class="form-group">
                                 <label for="mensagem">Descrição Detalhada</label>
-                                <textarea id="mensagem" name="mensagem" required></textarea>
-                                <div class="form-group">
+                                <textarea id="mensagem" name="mensagem" required placeholder="Descreva o problema com detalhes para a IA analisar..."></textarea>
+                                <div class="form-group" style="margin-top: 15px;">
                                     <label for="arquivo">Anexar Arquivo (Opcional)</label>
-                                    <input type="file" id="arquivo" name="arquivo"
-                                        accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.xlsx,.txt">
+                                    <input type="file" id="arquivo" name="arquivo" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.xlsx,.txt">
                                 </div>
                             </div>
+                            <!-- Campo oculto para compatibilidade futura -->
                             <input type="hidden" name="_next" value="obrigado.html">
+                            
                             <div class="btn-container">
                                 <button type="submit" class="cta-button">Enviar Chamado</button>
                             </div>
                         </form>
                     </div>
-
-                    <script>
-                        (function () {
-                            // ============================================================
-                            // 1. Lógica do Menu Mobile (Mantida do seu código original)
-                            // ============================================================
-                            const mobileMenu = document.querySelector('.mobile-menu-icon');
-                            const navList = document.querySelector('.nav-list');
-                            const navLinks = document.querySelectorAll('.nav-link');
-
-                            if (mobileMenu) {
-                                mobileMenu.addEventListener('click', () => {
-                                    navList.classList.toggle('active');
-                                });
-                            }
-
-                            navLinks.forEach(link => {
-                                link.addEventListener('click', () => {
-                                    if (navList.classList.contains('active')) {
-                                        navList.classList.remove('active');
-                                    }
-                                });
-                            });
-
-                            // ============================================================
-                            // 2. Lógica Dinâmica da FAQ (Base de Conhecimento)
-                            // ============================================================
-
-                            // Dados das sugestões por categoria
-                            const sugestoesPorCategoria = {
-                                'hardware': [
-                                    { titulo: "Solução Rápida: Minha impressora está 'offline'", texto: "Verifique se o cabo USB ou de rede está bem conectado e se a impressora está ligada." },
-                                    { titulo: "Como reinstalar o driver da impressora HP-1020", texto: "Acesse o Painel de Controle > Dispositivos e Impressoras e remova o dispositivo antes de reinstalar." },
-                                    { titulo: "Mouse ou Teclado não respondem", texto: "Tente trocar a porta USB. Se for sem fio, verifique se as pilhas precisam ser trocadas." }
-                                ],
-                                'software': [
-                                    { titulo: "Erro ao abrir o Excel ou Word", texto: "Tente abrir em Modo de Segurança segurando a tecla CTRL ao clicar no ícone." },
-                                    { titulo: "Sistema Interno lento ou travando", texto: "Limpe o cache do navegador (CTRL + SHIFT + DEL) e tente acessar novamente." },
-                                    { titulo: "Antivírus bloqueando arquivos", texto: "Verifique se o arquivo é confiável e solicite uma exceção temporária ao suporte." }
-                                ],
-                                'rede': [
-                                    { titulo: "Sem conexão com a Internet", texto: "Verifique se o cabo de rede está conectado ou se o Wi-Fi está ativo no seu dispositivo." },
-                                    { titulo: "Acesso à VPN falhando", texto: "Confirme se sua senha de rede expirou ou se o token de autenticação está válido." },
-                                    { titulo: "Lentidão generalizada na rede", texto: "Desligue downloads pesados e verifique se outros colegas estão com o mesmo problema." }
-                                ],
-                                'email': [
-                                    { titulo: "Não consigo enviar e-mails", texto: "Verifique se o anexo não ultrapassa 25MB e se o endereço do destinatário está correto." },
-                                    { titulo: "Outlook pedindo senha constantemente", texto: "Sua senha de rede pode ter expirado. Tente fazer logoff e login no Windows." },
-                                    { titulo: "Configurar e-mail no celular", texto: "Utilize as configurações de servidor IMAP: mail.zenite.com, Porta 993 (SSL)." }
-                                ],
-                                'backup': [
-                                    { titulo: "OneDrive não está sincronizando", texto: "Verifique se você está logado na conta corporativa e se há espaço disponível." },
-                                    { titulo: "Recuperar arquivo deletado", texto: "Acesse a Lixeira do Windows ou a versão online do OneDrive para restaurar." },
-                                    { titulo: "Erro de espaço em disco cheio", texto: "Exclua arquivos temporários da pasta Downloads e esvazie a lixeira." }
-                                ],
-                                'instalacoes': [
-                                    { titulo: "Solicitar instalação de novo software", texto: "Softwares não homologados precisam de aprovação do gestor antes da instalação." },
-                                    { titulo: "Atualização do Windows pendente", texto: "Reinicie o computador para aplicar as atualizações de segurança críticas." },
-                                    { titulo: "Configurar segundo monitor", texto: "Pressione Windows + P e selecione a opção 'Estender' para usar duas telas." }
-                                ],
-                                'solicitacoes': [
-                                    { titulo: "Criação de novo usuário", texto: "Envie o formulário de admissão preenchido pelo RH junto com este chamado." },
-                                    { titulo: "Troca de equipamento (Notebook/PC)", texto: "Equipamentos são trocados a cada 3 anos ou em caso de falha de hardware comprovada." },
-                                    { titulo: "Acesso a pasta de rede restrita", texto: "É necessária a aprovação do dono da pasta (Data Owner) para liberar o acesso." }
-                                ]
-                            };
-
-                            const categoriaSelect = document.getElementById('categoria');
-                            const faqContainer = document.querySelector('.info-abrirnovochamado');
-
-                            // Função para atualizar a FAQ com atraso simulado
-                            function atualizarFAQ() {
-                                const categoriaSelecionada = categoriaSelect.value;
-                                const sugestoes = sugestoesPorCategoria[categoriaSelecionada] || sugestoesPorCategoria['hardware'];
-
-                                // 1. Mostra estado de carregamento imediatamente
-                                faqContainer.innerHTML = `
-                <h4>Sugestões da IA</h4>
-                <p style="color: #666; font-style: italic;">Analisando solicitação...</p>
-            `;
-
-                                // 2. Aguarda 1 segundo (1000ms) antes de mostrar o conteúdo
-                                setTimeout(() => {
-                                    // Mantém o título e subtítulo fixos
-                                    let htmlContent = `
-                    <h4>Base de Conhecimento (FAQ)</h4>
-                    <p>Identificamos soluções possíveis para a categoria <span style="font-style: italic; text-decoration: underline;">${categoriaSelect.options[categoriaSelect.selectedIndex].text}</span>:</p>
-                    <br>
-                `;
-
-                                    // Gera os itens dinâmicos
-                                    sugestoes.forEach(item => {
-                                        // Adiciona uma pequena animação de fade-in via style inline
-                                        htmlContent += `
-                        <div class="info-item" style="animation: fadeIn 0.5s ease-in-out;">
-                            <div class="icon"><i class="fa fa-lightbulb"></i></div>
-                            <div>
-                                <strong>${item.titulo}</strong><br>
-                                <span style="font-size: 0.9rem; color: #666;">${item.texto}</span>
-                            </div>
-                        </div>
-                    `;
-                                    });
-
-                                    faqContainer.innerHTML = htmlContent;
-                                }, 5000); // <--- AQUI É O TEMPO DO ATRASO (1000 = 1 segundo)
-                            }
-
-                            // Adiciona o evento de mudança (change) ao select
-                            if (categoriaSelect) {
-                                categoriaSelect.addEventListener('change', atualizarFAQ);
-
-                                // Chama a função uma vez ao carregar (sem atraso inicial, opcionalmente)
-                                // Se quiser que a primeira vez também tenha atraso, mantenha apenas atualizarFAQ();
-                                // Se quiser imediato na primeira vez, teria que duplicar a lógica ou passar um parâmetro.
-                                // Vamos manter simples com o atraso sempre que chamar:
-                                atualizarFAQ();
-                            }
-                            // ============================================================
-                            // 3. Lógica de Envio do Formulário (Mantida do seu código original)
-                            // ============================================================
-                            const form = document.querySelector(".form-abrirnovochamado form");
-                            if (form) {
-                                const submitBtn = form.querySelector('button[type="submit"]');
-
-                                function setLoading(isLoading) {
-                                    if (isLoading) {
-                                        submitBtn.disabled = true;
-                                        submitBtn.dataset.originalText = submitBtn.innerHTML;
-                                        submitBtn.innerHTML = "Analisando...";
-                                    } else {
-                                        submitBtn.disabled = false;
-                                        if (submitBtn.dataset.originalText) {
-                                            submitBtn.innerHTML = submitBtn.dataset.originalText;
-                                        }
-                                    }
-                                }
-
-                                form.addEventListener("submit", function (e) {
-                                    e.preventDefault();
-                                    setLoading(true);
-
-                                    // Simulação de envio (já que não temos backend real aqui)
-                                    setTimeout(() => {
-                                        setLoading(false);
-                                        alert("Chamado registrado com sucesso! Nossa IA está analisando sua solicitação.");
-                                        // window.location.href = "obrigado.html"; // Descomente se tiver a página
-                                        form.reset();
-                                    }, 2000);
-                                });
-                            }
-
-                        })();
-                    </script>
-
-
                 </div>
             </div>
         </section>
@@ -674,14 +560,13 @@
         <div class="container sobre-content">
             <div class="sobre-texto">
                 <h2>Suporte Especializado e Feedback</h2>
-                <p>Encontrou alguma inconsistência ou o sistema está indisponível? Acione a equipe de TI através dos
-                    canais de contingência.</p>
+                <p style="text-align: center; margin-bottom: 30px;">Encontrou alguma inconsistência ou o sistema está indisponível? Acione a equipe de TI através dos canais de contingência.</p>
+                
                 <div class="info-item">
                     <div class="icon"><i class="fab fa-whatsapp"></i></div>
                     <div>
                         <strong>WhatsApp</strong><br>
-                        <a href="https://api.whatsapp.com/send?phone=5511980773340" target="_blank" rel="noopener">(11)
-                            98077-3340</a>
+                        <a href="https://api.whatsapp.com/send?phone=5511980773340" target="_blank" rel="noopener">(11) 98077-3340</a>
                     </div>
                 </div>
 
@@ -700,12 +585,11 @@
                         <span>Departamento de TI - 5º Andar</span>
                     </div>
                 </div>
-
             </div>
 
             <div class="sobre-imagem">
-                <img src="C:\Users\APE\Desktop\UNIP\GitHub\HelpDeskAI\imagem.jpg"
-                    alt="Equipe de Suporte de TI trabalhando">
+                <!-- Ajuste o caminho da imagem se necessário -->
+                <img src="C:\Users\APE\Desktop\UNIP\GitHub\CrucialSuporte-main\imagem1.jpg" alt="Equipe de Suporte de TI trabalhando">
             </div>
         </div>
     </section>
@@ -718,22 +602,149 @@
     </footer>
 
     <script>
-        const mobileMenu = document.querySelector('.mobile-menu-icon');
-        const navList = document.querySelector('.nav-list');
-        const navLinks = document.querySelectorAll('.nav-link');
+        (function () {
+            // ============================================================
+            // 1. Lógica do Menu Mobile (Responsivo)
+            // ============================================================
+            const mobileMenu = document.querySelector('.mobile-menu-icon');
+            const navList = document.querySelector('.nav-list');
+            const navLinks = document.querySelectorAll('.nav-link');
 
-        mobileMenu.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
+            if (mobileMenu) {
+                mobileMenu.addEventListener('click', () => {
+                    navList.classList.toggle('active');
+                    // Animação simples do ícone (X)
+                    const lines = mobileMenu.querySelectorAll('div');
+                    // Aqui você poderia adicionar classes CSS para transformar o ícone em X
+                });
+            }
 
-        // Fecha o menu ao clicar em um link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navList.classList.contains('active')) {
-                    navList.classList.remove('active');
-                }
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navList.classList.contains('active')) {
+                        navList.classList.remove('active');
+                    }
+                });
             });
-        });
+
+            // ============================================================
+            // 2. Lógica Dinâmica da FAQ (Base de Conhecimento)
+            // ============================================================
+
+            const sugestoesPorCategoria = {
+                'hardware': [
+                    { titulo: "Solução Rápida: Minha impressora está 'offline'", texto: "Verifique se o cabo USB ou de rede está bem conectado e se a impressora está ligada." },
+                    { titulo: "Como reinstalar o driver da impressora HP-1020", texto: "Acesse o Painel de Controle > Dispositivos e Impressoras e remova o dispositivo antes de reinstalar." },
+                    { titulo: "Mouse ou Teclado não respondem", texto: "Tente trocar a porta USB. Se for sem fio, verifique se as pilhas precisam ser trocadas." }
+                ],
+                'software': [
+                    { titulo: "Erro ao abrir o Excel ou Word", texto: "Tente abrir em Modo de Segurança segurando a tecla CTRL ao clicar no ícone." },
+                    { titulo: "Sistema Interno lento ou travando", texto: "Limpe o cache do navegador (CTRL + SHIFT + DEL) e tente acessar novamente." },
+                    { titulo: "Antivírus bloqueando arquivos", texto: "Verifique se o arquivo é confiável e solicite uma exceção temporária ao suporte." }
+                ],
+                'rede': [
+                    { titulo: "Sem conexão com a Internet", texto: "Verifique se o cabo de rede está conectado ou se o Wi-Fi está ativo no seu dispositivo." },
+                    { titulo: "Acesso à VPN falhando", texto: "Confirme se sua senha de rede expirou ou se o token de autenticação está válido." },
+                    { titulo: "Lentidão generalizada na rede", texto: "Desligue downloads pesados e verifique se outros colegas estão com o mesmo problema." }
+                ],
+                'email': [
+                    { titulo: "Não consigo enviar e-mails", texto: "Verifique se o anexo não ultrapassa 25MB e se o endereço do destinatário está correto." },
+                    { titulo: "Outlook pedindo senha constantemente", texto: "Sua senha de rede pode ter expirado. Tente fazer logoff e login no Windows." },
+                    { titulo: "Configurar e-mail no celular", texto: "Utilize as configurações de servidor IMAP: mail.zenite.com, Porta 993 (SSL)." }
+                ],
+                'backup': [
+                    { titulo: "OneDrive não está sincronizando", texto: "Verifique se você está logado na conta corporativa e se há espaço disponível." },
+                    { titulo: "Recuperar arquivo deletado", texto: "Acesse a Lixeira do Windows ou a versão online do OneDrive para restaurar." },
+                    { titulo: "Erro de espaço em disco cheio", texto: "Exclua arquivos temporários da pasta Downloads e esvazie a lixeira." }
+                ],
+                'instalacoes': [
+                    { titulo: "Solicitar instalação de novo software", texto: "Softwares não homologados precisam de aprovação do gestor antes da instalação." },
+                    { titulo: "Atualização do Windows pendente", texto: "Reinicie o computador para aplicar as atualizações de segurança críticas." },
+                    { titulo: "Configurar segundo monitor", texto: "Pressione Windows + P e selecione a opção 'Estender' para usar duas telas." }
+                ],
+                'solicitacoes': [
+                    { titulo: "Criação de novo usuário", texto: "Envie o formulário de admissão preenchido pelo RH junto com este chamado." },
+                    { titulo: "Troca de equipamento (Notebook/PC)", texto: "Equipamentos são trocados a cada 3 anos ou em caso de falha de hardware comprovada." },
+                    { titulo: "Acesso a pasta de rede restrita", texto: "É necessária a aprovação do dono da pasta (Data Owner) para liberar o acesso." }
+                ]
+            };
+
+            const categoriaSelect = document.getElementById('categoria');
+            const faqContainer = document.querySelector('.info-abrirnovochamado');
+
+            function atualizarFAQ() {
+                const categoriaSelecionada = categoriaSelect.value;
+                const sugestoes = sugestoesPorCategoria[categoriaSelecionada] || sugestoesPorCategoria['hardware'];
+
+                faqContainer.innerHTML = `
+                    <h4>Sugestões da IA</h4>
+                    <p style="color: #666; font-style: italic;">Analisando solicitação...</p>
+                `;
+
+                setTimeout(() => {
+                    let htmlContent = `
+                        <h4>Base de Conhecimento (FAQ)</h4>
+                        <p>Identificamos soluções possíveis para a categoria <span style="font-style: italic; text-decoration: underline;">${categoriaSelect.options[categoriaSelect.selectedIndex].text}</span>:</p>
+                        <br>
+                    `;
+
+                    sugestoes.forEach(item => {
+                        htmlContent += `
+                            <div class="info-item" style="animation: fadeIn 0.5s ease-in-out;">
+                                <div class="icon"><i class="fa fa-lightbulb"></i></div>
+                                <div>
+                                    <strong>${item.titulo}</strong><br>
+                                    <span style="font-size: 0.9rem; color: #666;">${item.texto}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    faqContainer.innerHTML = htmlContent;
+                }, 1000); 
+            }
+
+            if (categoriaSelect) {
+                categoriaSelect.addEventListener('change', atualizarFAQ);
+                // Inicia com a primeira categoria carregada
+                atualizarFAQ();
+            }
+
+            // ============================================================
+            // 3. Lógica de Envio do Formulário (Sem Alerta, Com Redirecionamento)
+            // ============================================================
+            const form = document.querySelector(".form-abrirnovochamado form");
+            if (form) {
+                const submitBtn = form.querySelector('button[type="submit"]');
+
+                function setLoading(isLoading) {
+                    if (isLoading) {
+                        submitBtn.disabled = true;
+                        submitBtn.dataset.originalText = submitBtn.innerHTML;
+                        submitBtn.innerHTML = "Analisando...";
+                    } else {
+                        submitBtn.disabled = false;
+                        if (submitBtn.dataset.originalText) {
+                            submitBtn.innerHTML = submitBtn.dataset.originalText;
+                        }
+                    }
+                }
+
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    setLoading(true);
+
+                    // Simula envio
+                    setTimeout(() => {
+                        setLoading(false);
+                        // Redireciona diretamente para obrigado.html
+                        window.location.href = "obrigado.html"; 
+                        form.reset();
+                    }, 2000);
+                });
+            }
+
+        })();
     </script>
 </body>
 
