@@ -37,7 +37,7 @@
 
         body {
             color: var(--cor-cinza-escuro);
-            background-color: var(--cor-cinza-claro); /* Fundo padrão mais suave */
+            background-color: var(--cor-cinza-claro);
         }
 
         .container {
@@ -47,7 +47,7 @@
         }
 
         section {
-            padding: 60px 0; /* Padding responsivo padrão */
+            padding: 60px 0;
         }
 
         @media (min-width: 768px) {
@@ -129,7 +129,7 @@
         /* Menu Desktop */
         .nav-list {
             list-style: none;
-            display: none; /* Escondido no mobile por padrão */
+            display: none;
             gap: 30px;
         }
 
@@ -154,7 +154,7 @@
         .mobile-menu-icon {
             display: block;
             cursor: pointer;
-            z-index: 1001; /* Fica acima do menu aberto */
+            z-index: 1001;
         }
 
         @media (min-width: 768px) {
@@ -174,18 +174,18 @@
         /* Menu Mobile Ativo */
         .nav-list.active {
             display: flex;
-            position: fixed; /* Fixa na tela inteira */
+            position: fixed;
             top: 0;
-            left: 0; /* Começa da esquerda */
-            width: 100%; /* Largura total */
-            height: 100vh; /* Altura total */
+            left: 0;
+            width: 100%;
+            height: 100vh;
             background: var(--cor-branco);
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 999; /* Abaixo do ícone */
-            gap: 40px; /* Espaço maior entre itens */
-            font-size: 1.5rem; /* Texto maior */
+            z-index: 999;
+            gap: 40px;
+            font-size: 1.5rem;
         }
 
         /* --- Seção Hero (Principal) --- */
@@ -239,13 +239,13 @@
             transition: background-color 0.3s ease;
             border: none;
             cursor: pointer;
-            width: 100%; /* Botão largo no mobile */
+            width: 100%;
             text-align: center;
         }
 
         @media (min-width: 768px) {
             .cta-button {
-                width: auto; /* Botão normal no desktop */
+                width: auto;
                 font-size: 1.1rem;
             }
         }
@@ -257,7 +257,7 @@
         /* --- Seção Abrir Chamado (Responsiva) --- */
         .abrirnovochamado-wrapper {
             display: flex;
-            flex-direction: column; /* Coluna no mobile */
+            flex-direction: column;
             gap: 30px;
             background-color: var(--cor-branco);
             padding: 20px;
@@ -267,7 +267,7 @@
 
         @media (min-width: 900px) {
             .abrirnovochamado-wrapper {
-                flex-direction: row-reverse; /* Lado a lado no desktop, form primeiro */
+                flex-direction: row-reverse;
                 gap: 50px;
                 padding: 50px;
             }
@@ -276,7 +276,7 @@
         .info-abrirnovochamado,
         .form-abrirnovochamado {
             flex: 1;
-            width: 100%; /* Ocupa largura total */
+            width: 100%;
         }
 
         /* Área de FAQ */
@@ -285,12 +285,12 @@
             padding: 20px;
             border-radius: 8px;
             border: 2px solid #c5dfff;
-            order: 1; /* No mobile, FAQ aparece depois do formulário (opcional, mude para -1 para aparecer antes) */
+            order: 1;
         }
 
         @media (min-width: 900px) {
             .info-abrirnovochamado {
-                order: 0; /* Volta ao normal no desktop */
+                order: 0;
             }
         }
 
@@ -300,9 +300,10 @@
             margin-bottom: 20px;
         }
 
+        /* Estilo base dos itens de informação */
         .info-item {
             display: flex;
-            align-items: flex-start; /* Alinha ícone ao topo se o texto for longo */
+            align-items: flex-start;
             margin-bottom: 15px;
             background: #ffffff;
             border: 1px solid #e0e0e0;
@@ -316,13 +317,21 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
+        /* CORREÇÃO DAS CORES DOS ÍCONES */
+        
+        /* Padrão (Usado no Rodapé) -> AZUL */
         .info-item .icon {
             font-size: 1.2rem;
-            color: var(--cor-azul); /* Ícone azul conforme pedido */
+            color: var(--cor-azul); /* Azul padrão */
             margin-right: 15px;
-            min-width: 30px; /* Garante espaço fixo para o ícone */
+            min-width: 30px;
             text-align: center;
-            margin-top: 3px; /* Ajuste fino */
+            margin-top: 3px;
+        }
+
+        /* Específico para Sugestões (Usado na FAQ) -> LARANJA */
+        .info-item.sugestao .icon {
+            color: var(--cor-laranja) !important; /* Força Laranja */
         }
 
         /* Formulário */
@@ -345,7 +354,7 @@
             border-radius: 5px;
             border: 1px solid #ddd;
             font-size: 1rem;
-            background-color: #fff; /* Garante fundo branco */
+            background-color: #fff;
         }
 
         .form-group textarea {
@@ -358,17 +367,17 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--cor-azul);
-            box-shadow: 0 0 0 3px rgba(48, 100, 230, 0.1); /* Efeito de foco */
+            box-shadow: 0 0 0 3px rgba(48, 100, 230, 0.1);
         }
 
         .btn-container {
-            text-align: center; /* Centralizado no mobile */
+            text-align: center;
             margin-top: 20px;
         }
 
         @media (min-width: 768px) {
             .btn-container {
-                text-align: right; /* Direita no desktop */
+                text-align: right;
             }
         }
 
@@ -379,14 +388,14 @@
 
         .sobre-content {
             display: flex;
-            flex-direction: column; /* Coluna no mobile */
+            flex-direction: column;
             gap: 40px;
         }
 
         @media (min-width: 900px) {
             .sobre-content {
-                flex-direction: row; /* Linha no desktop */
-                align-items: center; /* Centraliza verticalmente */
+                flex-direction: row;
+                align-items: center;
             }
         }
 
@@ -396,35 +405,32 @@
         }
 
         .sobre-texto h2 {
-            text-align: center; /* Centro no mobile */
+            text-align: center;
         }
 
         @media (min-width: 900px) {
             .sobre-texto h2 {
-                text-align: left; /* Esquerda no desktop */
+                text-align: left;
             }
         }
 
-        /* Cards de Contato */
+        /* Cards de Contato (Sem borda) */
         .sobre-texto .info-item {
-            border: none; /* Remove borda dos itens de contato */
+            border: none;
             background: transparent;
             padding: 10px 0;
             margin-bottom: 20px;
         }
         
-        .sobre-texto .info-item .icon {
-             color: var(--cor-laranja); /* Ícones de contato laranja */
-             font-size: 1.5rem;
-        }
+        /* A cor dos ícones aqui será AZUL, pois não tem a classe .sugestao */
 
         .sobre-imagem {
-            display: none; /* Esconde imagem no mobile para economizar espaço (opcional) */
+            display: none;
         }
 
         @media (min-width: 768px) {
             .sobre-imagem {
-                display: block; /* Mostra no tablet/desktop */
+                display: block;
                 text-align: center;
             }
         }
@@ -562,6 +568,7 @@
                 <h2>Suporte Especializado e Feedback</h2>
                 <p style="text-align: center; margin-bottom: 30px;">Encontrou alguma inconsistência ou o sistema está indisponível? Acione a equipe de TI através dos canais de contingência.</p>
                 
+                <!-- Ícones de Contato (Serão Azuis pelo CSS padrão) -->
                 <div class="info-item">
                     <div class="icon"><i class="fab fa-whatsapp"></i></div>
                     <div>
@@ -588,8 +595,8 @@
             </div>
 
             <div class="sobre-imagem">
-                <!-- Ajuste o caminho da imagem se necessário -->
-                <img src="C:\Users\APE\Desktop\UNIP\GitHub\CrucialSuporte-main\imagem1.jpg" alt="Equipe de Suporte de TI trabalhando">
+                <!-- Certifique-se que o caminho da imagem está correto -->
+                <img src="C:\Users\APE\Desktop\UNIP\HelpDeskAI\imagem.jpg" alt="Equipe de Suporte de TI trabalhando">
             </div>
         </div>
     </section>
@@ -603,9 +610,7 @@
 
     <script>
         (function () {
-            // ============================================================
-            // 1. Lógica do Menu Mobile (Responsivo)
-            // ============================================================
+            // 1. Menu Mobile
             const mobileMenu = document.querySelector('.mobile-menu-icon');
             const navList = document.querySelector('.nav-list');
             const navLinks = document.querySelectorAll('.nav-link');
@@ -613,9 +618,6 @@
             if (mobileMenu) {
                 mobileMenu.addEventListener('click', () => {
                     navList.classList.toggle('active');
-                    // Animação simples do ícone (X)
-                    const lines = mobileMenu.querySelectorAll('div');
-                    // Aqui você poderia adicionar classes CSS para transformar o ícone em X
                 });
             }
 
@@ -627,10 +629,7 @@
                 });
             });
 
-            // ============================================================
-            // 2. Lógica Dinâmica da FAQ (Base de Conhecimento)
-            // ============================================================
-
+            // 2. FAQ Dinâmica
             const sugestoesPorCategoria = {
                 'hardware': [
                     { titulo: "Solução Rápida: Minha impressora está 'offline'", texto: "Verifique se o cabo USB ou de rede está bem conectado e se a impressora está ligada." },
@@ -689,8 +688,9 @@
                     `;
 
                     sugestoes.forEach(item => {
+                        // ADICIONADO: classe 'sugestao' para aplicar a cor laranja via CSS
                         htmlContent += `
-                            <div class="info-item" style="animation: fadeIn 0.5s ease-in-out;">
+                            <div class="info-item sugestao" style="animation: fadeIn 0.5s ease-in-out;">
                                 <div class="icon"><i class="fa fa-lightbulb"></i></div>
                                 <div>
                                     <strong>${item.titulo}</strong><br>
@@ -706,13 +706,10 @@
 
             if (categoriaSelect) {
                 categoriaSelect.addEventListener('change', atualizarFAQ);
-                // Inicia com a primeira categoria carregada
                 atualizarFAQ();
             }
 
-            // ============================================================
-            // 3. Lógica de Envio do Formulário (Sem Alerta, Com Redirecionamento)
-            // ============================================================
+            // 3. Envio do Formulário (Sem Alerta, Com Redirecionamento)
             const form = document.querySelector(".form-abrirnovochamado form");
             if (form) {
                 const submitBtn = form.querySelector('button[type="submit"]');
@@ -734,7 +731,6 @@
                     e.preventDefault();
                     setLoading(true);
 
-                    // Simula envio
                     setTimeout(() => {
                         setLoading(false);
                         // Redireciona diretamente para obrigado.html
